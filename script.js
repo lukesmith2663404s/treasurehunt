@@ -32,6 +32,13 @@ function render() {
         
         clueGrid.appendChild(b);
     });
+    
+    // Check if all clues are complete
+    if (done === 15) {
+        setTimeout(() => {
+            showFinal();
+        }, 300);
+    }
 }
 
 function openClue(c) {
