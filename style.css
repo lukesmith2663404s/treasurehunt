@@ -95,9 +95,9 @@ GRID
 
         repeat(5,1fr);
 
-    gap:16px;
+    gap:8px;
 
-    padding:18px;
+    padding:12px;
 
     width:100%;
 
@@ -113,13 +113,13 @@ TILE
 
     border:none;
 
-    border-radius:22px;
+    border-radius:12px;
 
     background:var(--sea);
 
     color:white;
 
-    font-size:2rem;
+    font-size:1.5rem;
 
     font-weight:bold;
 
@@ -140,6 +140,8 @@ TILE
     align-items:center;
 
     cursor:pointer;
+
+    min-height:0;
 
 }
 
@@ -227,6 +229,8 @@ BOTTOM SHEET
 
         sheetUp .35s;
 
+    position:relative;
+
 }
 
 @keyframes sheetUp{
@@ -302,6 +306,8 @@ ANSWER BOX
 
     transition:.2s;
 
+    cursor:pointer;
+
 }
 
 .mainButton{
@@ -312,13 +318,20 @@ ANSWER BOX
 
 }
 
+.mainButton:active{
+
+    background:var(--seaDark);
+
+}
+
 .secondaryButton{
 
     background:var(--sandDark);
 
+    color:var(--black);
+
 }
 
-.mainButton:active,
 .secondaryButton:active{
 
     transform:scale(.97);
@@ -382,6 +395,8 @@ CLOSE BUTTON
     color:var(--seaDark);
 
     transition:.2s;
+
+    z-index:10;
 
 }
 
