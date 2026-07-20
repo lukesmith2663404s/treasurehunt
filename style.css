@@ -78,32 +78,6 @@ body{
 }
 
 /* ============================
-TITLE
-============================ */
-
-.title-area{
-
-    flex:0;
-
-    padding-top:18px;
-
-    padding-bottom:16px;
-
-    text-align:center;
-
-}
-
-.title-area h1{
-
-    font-size:2rem;
-
-    letter-spacing:2px;
-
-    color:var(--seaDark);
-
-}
-
-/* ============================
 GRID
 ============================ */
 
@@ -123,9 +97,7 @@ GRID
 
     gap:16px;
 
-    padding:
-
-        18px;
+    padding:18px;
 
     width:100%;
 
@@ -166,6 +138,8 @@ TILE
     justify-content:center;
 
     align-items:center;
+
+    cursor:pointer;
 
 }
 
@@ -383,3 +357,36 @@ WRONG ANSWER
 
 }
 
+/* ============================
+CLOSE BUTTON
+============================ */
+
+.closeButton{
+
+    position:absolute;
+
+    top:16px;
+
+    right:16px;
+
+    background:none;
+
+    border:none;
+
+    font-size:1.5rem;
+
+    cursor:pointer;
+
+    padding:8px;
+
+    color:var(--seaDark);
+
+    transition:.2s;
+
+}
+
+.closeButton:hover{
+
+    transform:scale(1.2);
+
+}
