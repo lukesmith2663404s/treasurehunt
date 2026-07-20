@@ -1,1 +1,152 @@
-let current;let active=[];function unlock(){let rem=clues.filter(c=>c.state==='locked');while(active.length<2&&rem.length){let c=rem.splice(Math.random()*rem.length|0,1)[0];c.state='open';active.push(c)}}function render(){grid.innerHTML='';let done=0;clues.forEach(c=>{if(c.state==='done')done++;let b=document.createElement('button');b.className='tile '+(c.state==='open'?'open':c.state==='done'?'done':'');b.textContent=c.state==='locked'?'🔒':c.state==='done'?'✓':c.id;if(c.state==='open')b.onclick=()=>openClue(c);grid.appendChild(b)});prog.textContent=`${done}/15 clues`;fill.style.width=(done/15*100)+'%';if(done===15)alert('FINAL CLUE PLACEHOLDER')}function openClue(c){current=c;ct.textContent='Clue '+c.id;cc.textContent=c.clue;ci.src=c.image;hint.textContent='';ans.value='';overlay.classList.remove('hide')}function closeSheet(){overlay.classList.add('hide')}function taskHint(){hint.textContent='Task: '+current.hintTask+'\nHint: '+current.hint}function check(){let a=ans.value.trim().toLowerCase();if(current.answers.includes(a)){current.state='done';active=active.filter(x=>x!==current);unlock();localStorage.setItem('hunt',JSON.stringify(clues));closeSheet();render()}else{wrong.classList.remove('hide');try{aud.play()}catch(e){}navigator.vibrate&&navigator.vibrate(300);setTimeout(()=>wrong.classList.add('hide'),3000)}}let s=localStorage.getItem('hunt');if(s){let d=JSON.parse(s);d.forEach((x,i)=>clues[i].state=x.state)}unlock();render();
+let current;
+let active = [];
+
+function unlock() {
+    let rem = clues.filter(c => c.state === 'locked');
+    while (active.length < 2 && rem.length) {
+        let c = rem.splice(Math.random() * rem.length | 0, 1)[0];
+        c.state = 'open';
+        active.push(c);
+    }
+}
+
+function render() {
+    let clueGrid = document.getElementById('clueGrid');
+    clueGrid.innerHTML = '';
+    let done = 0;
+    
+    clues.forEach(c => {
+        if (c.state === 'done') done++;
+        
+        let b = document.createElement('button');
+        b.className = 'clueTile ' + (
+            c.state === 'open' ? 'available' : 
+            c.state === 'done' ? 'complete' : 
+            'locked'
+        );
+        b.textContent = c.state === 'locked' ? '🔒' : c.state === 'done' ? '✓' : c.id;
+        
+        if (c.state === 'open') {
+            b.onclick = () => openClue(c);
+        }
+        
+        clueGrid.appendChild(b);
+    });
+}
+
+function openClue(c) {
+    current = c;
+    
+    document.getElementById('clueTitle').textContent = 'Clue ' + c.id;
+    document.getElementById('clueText').textContent = c.clue;
+    
+    let clueImage = document.getElementById('clueImage');
+    if (c.image) {
+        clueImage.src = c.image;
+        clueImage.classList.remove('hidden');
+    } else {
+        clueImage.classList.add('hidden');
+    }
+    
+    document.getElementById('answerInput').value = '';
+    
+    let clueOverlay = document.getElementById('clueOverlay');
+    clueOverlay.classList.remove('hidden');
+}
+
+function closeSheet() {
+    let clueOverlay = document.getElementById('clueOverlay');
+    clueOverlay.classList.add('hidden');
+}
+
+function showHintTask() {
+    let hintTaskText = document.getElementById('hintTaskText');
+    hintTaskText.textContent = current.hintTask || 'Complete the task to get a hint.';
+    
+    let hintTaskOverlay = document.getElementById('hintTaskOverlay');
+    hintTaskOverlay.classList.remove('hidden');
+}
+
+function closeHintTask() {
+    let hintTaskOverlay = document.getElementById('hintTaskOverlay');
+    hintTaskOverlay.classList.add('hidden');
+}
+
+function showHint() {
+    let hintText = document.getElementById('hintText');
+    hintText.textContent = current.hint || 'No hint available';
+    
+    let hintOverlay = document.getElementById('hintOverlay');
+    hintOverlay.classList.remove('hidden');
+}
+
+function closeHint() {
+    let hintOverlay = document.getElementById('hintOverlay');
+    hintOverlay.classList.add('hidden');
+}
+
+function check() {
+    let a = document.getElementById('answerInput').value.trim().toLowerCase();
+    
+    if (current.answers.includes(a)) {
+        current.state = 'done';
+        active = active.filter(x => x !== current);
+        unlock();
+        
+        localStorage.setItem('hunt', JSON.stringify(clues));
+        
+        closeSheet();
+        render();
+    } else {
+        let wrongOverlay = document.getElementById('wrongOverlay');
+        wrongOverlay.classList.remove('hidden');
+        
+        try {
+            let wrongSound = document.getElementById('wrongSound');
+            wrongSound.play();
+        } catch (e) {
+            // Audio play failed silently
+        }
+        
+        if (navigator.vibrate) {
+            navigator.vibrate(300);
+        }
+        
+        setTimeout(() => {
+            wrongOverlay.classList.add('hidden');
+        }, 3000);
+    }
+}
+
+function showFinal() {
+    let finalOverlay = document.getElementById('finalOverlay');
+    finalOverlay.classList.remove('hidden');
+}
+
+// Event listeners
+document.getElementById('submitAnswerButton').onclick = check;
+document.getElementById('closeClueButton').onclick = closeSheet;
+document.getElementById('hintButton').onclick = showHintTask;
+document.getElementById('completedTaskButton').onclick = () => {
+    closeHintTask();
+    showHint();
+};
+document.getElementById('closeHintButton').onclick = closeHint;
+document.getElementById('showFinalButton').onclick = () => {
+    alert('🎉 FINAL CLUE PLACEHOLDER - Add your final message here!');
+};
+
+// Load saved progress
+let s = localStorage.getItem('hunt');
+if (s) {
+    let d = JSON.parse(s);
+    d.forEach((x, i) => {
+        if (i < clues.length) {
+            clues[i].state = x.state;
+        }
+    });
+}
+
+// Initialize
+unlock();
+render();
