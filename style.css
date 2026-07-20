@@ -1,1 +1,726 @@
-body{margin:0;font-family:Trebuchet MS;background:#E9D8B4;color:#222}header{background:#3A7CA5;color:#fff;padding:16px;text-align:center;box-shadow:0 2px 8px #0003}#bar{height:12px;background:#fff8;border-radius:8px;overflow:hidden;margin:10px auto;max-width:340px}#fill{height:100%;width:0;background:#7fc8f8;transition:.4s}#grid{display:grid;grid-template-columns:repeat(5,1fr);gap:12px;padding:16px}.tile{aspect-ratio:1;border:none;border-radius:18px;font-size:28px;background:#3A7CA5;color:#fff;box-shadow:0 4px 10px #0003;transition:.2s}.tile.open{background:#c8b07d;color:#222}.tile.done{background:#5ca66b}.tile:active{transform:scale(.95)}#overlay,#wrong{position:fixed;inset:0;display:flex;justify-content:center;align-items:center;background:#0008}.hide{display:none}.sheet{background:#f8f1df;border-radius:20px;padding:20px;width:90%;max-width:420px;animation:up .25s}img{max-width:100%;border-radius:12px}.row{display:flex;gap:10px}button,input{padding:12px;border-radius:10px;border:1px solid #333;width:100%;margin-top:10px}#wrong img{width:100%;height:100%;object-fit:cover}@keyframes up{from{transform:translateY(40px);opacity:0}to{opacity:1}}
+Perfect. We'll build one **real** `style.css` file. Here's **Part 1**, which completely replaces any CSS you've got so far.
+
+This gives you:
+
+* Sandy beige background
+* Sea blue theme
+* Proper 3×5 grid
+* Large rounded clue tiles
+* Phone-first layout
+* Smooth animations
+* Clean typography
+* Hidden overlay support
+
+Save this as **`style.css`**.
+
+```css
+/* =========================================================
+   TREASURE HUNT
+   STYLE.CSS
+   PART 1
+========================================================= */
+
+:root{
+
+    --sand:#E9D8B4;
+    --sand-dark:#D8C39A;
+
+    --sea:#3A7CA5;
+    --sea-dark:#295E80;
+    --sea-light:#4E97C4;
+
+    --green:#4CAF50;
+
+    --white:#FFFFFF;
+    --black:#222222;
+
+    --shadow:0 8px 20px rgba(0,0,0,.15);
+
+    --radius:18px;
+
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+
+    height:100%;
+
+}
+
+body{
+
+    height:100%;
+
+    background:var(--sand);
+
+    font-family:
+        "Trebuchet MS",
+        Arial,
+        sans-serif;
+
+    color:var(--black);
+
+    overflow:hidden;
+
+    user-select:none;
+
+    -webkit-tap-highlight-color:transparent;
+
+}
+
+#app{
+
+    width:100vw;
+    height:100vh;
+
+    display:flex;
+    flex-direction:column;
+
+}
+
+/* =========================================================
+TITLE
+========================================================= */
+
+.title-area{
+
+    flex:0 0 auto;
+
+    padding-top:22px;
+    padding-bottom:18px;
+
+    text-align:center;
+
+}
+
+.title-area h1{
+
+    font-size:2rem;
+
+    font-weight:bold;
+
+    letter-spacing:2px;
+
+    color:var(--sea-dark);
+
+}
+
+/* =========================================================
+GRID
+========================================================= */
+
+.clue-grid{
+
+    flex:1;
+
+    display:grid;
+
+    grid-template-columns:
+        repeat(3,1fr);
+
+    grid-template-rows:
+        repeat(5,1fr);
+
+    gap:14px;
+
+    padding:
+
+        18px
+        18px
+        24px
+        18px;
+
+}
+
+/* =========================================================
+TILE
+========================================================= */
+
+.clueTile{
+
+    border-radius:var(--radius);
+
+    border:none;
+
+    background:var(--sea);
+
+    color:white;
+
+    font-size:2rem;
+
+    font-weight:bold;
+
+    box-shadow:var(--shadow);
+
+    transition:
+        transform .18s,
+        background .2s,
+        opacity .25s;
+
+    cursor:pointer;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+.clueTile:active{
+
+    transform:scale(.94);
+
+}
+
+/* =========================================================
+LOCKED
+========================================================= */
+
+.locked{
+
+    background:var(--sea-dark);
+
+    color:white;
+
+}
+
+/* =========================================================
+AVAILABLE
+========================================================= */
+
+.available{
+
+    background:var(--sea);
+
+}
+
+.available:hover{
+
+    background:var(--sea-light);
+
+}
+
+/* =========================================================
+COMPLETE
+========================================================= */
+
+.complete{
+
+    background:var(--green);
+
+}
+
+/* =========================================================
+POP ANIMATION
+========================================================= */
+
+@keyframes pop{
+
+    0%{
+
+        transform:scale(.5);
+
+    }
+
+    70%{
+
+        transform:scale(1.1);
+
+    }
+
+    100%{
+
+        transform:scale(1);
+
+    }
+
+}
+
+.complete{
+
+    animation:pop .35s;
+
+}
+
+/* =========================================================
+OVERLAYS
+========================================================= */
+
+.overlay{
+
+    position:fixed;
+
+    inset:0;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:flex-end;
+
+    background:
+        rgba(0,0,0,.45);
+
+    z-index:100;
+
+}
+
+.hidden{
+
+    display:none!important;
+
+}
+
+/* =========================================================
+WRONG ANSWER
+========================================================= */
+
+#wrongOverlay{
+
+    position:fixed;
+
+    inset:0;
+
+    z-index:999;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    background:black;
+
+}
+
+#wrongOverlay img{
+
+    width:100vw;
+
+    height:100vh;
+
+    object-fit:cover;
+
+}
+
+/* =========================================================
+SCROLLBAR
+========================================================= */
+
+::-webkit-scrollbar{
+
+    display:none;
+
+}
+/* =========================================================
+   STYLE.CSS
+   PART 2
+========================================================= */
+
+
+/* ===============================
+   POPUP CARD
+================================ */
+
+.popup{
+
+    width:100%;
+    max-width:650px;
+
+    max-height:92vh;
+
+    overflow-y:auto;
+
+    background:var(--sand);
+
+    border-radius:28px 28px 0 0;
+
+    box-shadow:
+        0 -8px 30px rgba(0,0,0,.25);
+
+    padding:
+
+        26px
+        26px
+        36px
+        26px;
+
+    animation:slideUp .35s ease;
+
+}
+
+
+/* ===============================
+   POPUP ANIMATION
+================================ */
+
+@keyframes slideUp{
+
+    from{
+
+        transform:translateY(100%);
+        opacity:0;
+
+    }
+
+    to{
+
+        transform:translateY(0);
+        opacity:1;
+
+    }
+
+}
+
+
+/* ===============================
+   CLOSE BUTTON
+================================ */
+
+.closeButton{
+
+    width:44px;
+    height:44px;
+
+    border:none;
+
+    border-radius:50%;
+
+    background:var(--sea);
+
+    color:white;
+
+    font-size:22px;
+
+    cursor:pointer;
+
+    float:right;
+
+    transition:.2s;
+
+}
+
+.closeButton:hover{
+
+    background:var(--sea-light);
+
+}
+
+.closeButton:active{
+
+    transform:scale(.92);
+
+}
+
+
+/* ===============================
+   CLUE TITLE
+================================ */
+
+#clueTitle{
+
+    clear:both;
+
+    text-align:center;
+
+    font-size:2rem;
+
+    margin-bottom:18px;
+
+    color:var(--sea-dark);
+
+}
+
+
+/* ===============================
+   CLUE IMAGE
+================================ */
+
+#clueImage{
+
+    width:100%;
+
+    border-radius:18px;
+
+    margin-bottom:20px;
+
+    box-shadow:var(--shadow);
+
+    display:block;
+
+}
+
+
+/* ===============================
+   CLUE TEXT
+================================ */
+
+#clueText{
+
+    font-size:1.25rem;
+
+    line-height:1.5;
+
+    margin-bottom:24px;
+
+    text-align:center;
+
+}
+
+
+/* ===============================
+   ANSWER BOX
+================================ */
+
+#answerInput{
+
+    width:100%;
+
+    font-size:1.2rem;
+
+    padding:18px;
+
+    border-radius:16px;
+
+    border:3px solid var(--sea);
+
+    background:white;
+
+    color:var(--black);
+
+    outline:none;
+
+    margin-bottom:18px;
+
+    transition:.2s;
+
+}
+
+#answerInput:focus{
+
+    border-color:var(--sea-light);
+
+    box-shadow:0 0 10px rgba(58,124,165,.35);
+
+}
+
+
+/* ===============================
+   BUTTONS
+================================ */
+
+.mainButton,
+.secondaryButton{
+
+    width:100%;
+
+    padding:18px;
+
+    border:none;
+
+    border-radius:18px;
+
+    font-size:1.15rem;
+
+    font-weight:bold;
+
+    cursor:pointer;
+
+    margin-top:12px;
+
+    transition:.18s;
+
+}
+
+
+.mainButton{
+
+    background:var(--sea);
+
+    color:white;
+
+}
+
+
+.mainButton:hover{
+
+    background:var(--sea-light);
+
+}
+
+
+.secondaryButton{
+
+    background:var(--sand-dark);
+
+    color:var(--black);
+
+}
+
+
+.secondaryButton:hover{
+
+    filter:brightness(.95);
+
+}
+
+
+.mainButton:active,
+.secondaryButton:active{
+
+    transform:scale(.97);
+
+}
+
+
+/* ===============================
+   HINT TEXT
+================================ */
+
+#hintText,
+#hintTaskText{
+
+    font-size:1.2rem;
+
+    line-height:1.5;
+
+    text-align:center;
+
+    margin:
+
+        24px
+        0;
+
+}
+
+
+/* ===============================
+   FINAL SCREEN
+================================ */
+
+#finalOverlay{
+
+    justify-content:center;
+
+    align-items:center;
+
+}
+
+
+#finalOverlay .popup{
+
+    border-radius:28px;
+
+    text-align:center;
+
+}
+
+
+#finalOverlay h2{
+
+    font-size:2.4rem;
+
+    color:var(--sea-dark);
+
+    margin-bottom:20px;
+
+}
+
+
+#finalOverlay p{
+
+    font-size:1.3rem;
+
+    margin-bottom:26px;
+
+}
+
+
+/* ===============================
+   SHAKE ANIMATION
+================================ */
+
+@keyframes shake{
+
+    0%{transform:translateX(0);}
+    15%{transform:translateX(-10px);}
+    30%{transform:translateX(10px);}
+    45%{transform:translateX(-10px);}
+    60%{transform:translateX(10px);}
+    75%{transform:translateX(-6px);}
+    90%{transform:translateX(6px);}
+    100%{transform:translateX(0);}
+
+}
+
+.shake{
+
+    animation:shake .45s;
+
+}
+
+
+/* ===============================
+   FADE
+================================ */
+
+@keyframes fadeIn{
+
+    from{
+
+        opacity:0;
+
+    }
+
+    to{
+
+        opacity:1;
+
+    }
+
+}
+
+.fadeIn{
+
+    animation:fadeIn .25s;
+
+}
+
+
+/* ===============================
+   MOBILE
+================================ */
+
+@media (max-width:500px){
+
+    .title-area h1{
+
+        font-size:1.7rem;
+
+    }
+
+    .clueTile{
+
+        font-size:1.8rem;
+
+    }
+
+    #clueTitle{
+
+        font-size:1.7rem;
+
+    }
+
+    #clueText{
+
+        font-size:1.1rem;
+
+    }
+
+}
