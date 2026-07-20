@@ -1,6 +1,25 @@
 let current;
 let active = [];
 
+// Hint tasks list
+const hintTasks = [
+    'Find 3 different shades of blue in the room and show Anna',
+    'Do 10 jumping jacks and show Anna when done',
+    'Find something that rhymes with "clue" and show Anna',
+    'Sing the first line of a song to Anna',
+    'Do a funny dance move for Anna',
+    'Find an object that starts with each letter of your name and show Anna',
+    'Tell Anna a joke',
+    'Balance something on your head for 5 seconds and show Anna',
+    'Find the most interesting book nearby and show Anna',
+    'Do 5 push-ups and show Anna when done',
+    'Make a silly face and show Anna',
+    'Find something red, yellow, and green and show Anna',
+    'Recite the alphabet backwards to Anna',
+    'Find 3 things that are square and show Anna',
+    'Tell Anna what your favorite food is and why'
+];
+
 function unlock() {
     let rem = clues.filter(c => c.state === 'locked');
     while (active.length < 2 && rem.length) {
@@ -66,9 +85,14 @@ function closeSheet() {
     clueOverlay.classList.add('hidden');
 }
 
+function getRandomHintTask() {
+    return hintTasks[Math.floor(Math.random() * hintTasks.length)];
+}
+
 function showHintTask() {
     let hintTaskText = document.getElementById('hintTaskText');
-    hintTaskText.textContent = current.hintTask || 'Complete the task to get a hint.';
+    let randomTask = getRandomHintTask();
+    hintTaskText.textContent = 'Task: ' + randomTask + '\n\nShow Anna when you\'ve completed it to get your hint!';
     
     let hintTaskOverlay = document.getElementById('hintTaskOverlay');
     hintTaskOverlay.classList.remove('hidden');
