@@ -1,69 +1,56 @@
-Perfect. We'll build one **real** `style.css` file. Here's **Part 1**, which completely replaces any CSS you've got so far.
-
-This gives you:
-
-* Sandy beige background
-* Sea blue theme
-* Proper 3×5 grid
-* Large rounded clue tiles
-* Phone-first layout
-* Smooth animations
-* Clean typography
-* Hidden overlay support
-
-Save this as **`style.css`**.
-
-```css
-/* =========================================================
+/* ==========================================================
    TREASURE HUNT
    STYLE.CSS
-   PART 1
-========================================================= */
+========================================================== */
 
 :root{
 
-    --sand:#E9D8B4;
-    --sand-dark:#D8C39A;
+    --sand:#E8D8B6;
+    --sandDark:#D2BD92;
 
-    --sea:#3A7CA5;
-    --sea-dark:#295E80;
-    --sea-light:#4E97C4;
+    --sea:#3D83A8;
+    --seaDark:#295B77;
+    --seaLight:#5AA6D0;
 
     --green:#4CAF50;
 
     --white:#FFFFFF;
-    --black:#222222;
+    --black:#1F1F1F;
 
-    --shadow:0 8px 20px rgba(0,0,0,.15);
+    --shadow:
+        0 10px 28px rgba(0,0,0,.18);
 
-    --radius:18px;
+    --radius:22px;
 
 }
 
 *{
+
     margin:0;
     padding:0;
     box-sizing:border-box;
+
 }
 
-html{
+html,
+body{
 
+    width:100%;
     height:100%;
 
 }
 
 body{
 
-    height:100%;
-
     background:var(--sand);
 
+    color:var(--black);
+
     font-family:
-        "Trebuchet MS",
+
+        Trebuchet MS,
         Arial,
         sans-serif;
-
-    color:var(--black);
 
     overflow:hidden;
 
@@ -73,26 +60,34 @@ body{
 
 }
 
+.hidden{
+
+    display:none !important;
+
+}
+
 #app{
 
     width:100vw;
     height:100vh;
 
     display:flex;
+
     flex-direction:column;
 
 }
 
-/* =========================================================
+/* ============================
 TITLE
-========================================================= */
+============================ */
 
 .title-area{
 
-    flex:0 0 auto;
+    flex:0;
 
-    padding-top:22px;
-    padding-bottom:18px;
+    padding-top:18px;
+
+    padding-bottom:16px;
 
     text-align:center;
 
@@ -102,17 +97,15 @@ TITLE
 
     font-size:2rem;
 
-    font-weight:bold;
-
     letter-spacing:2px;
 
-    color:var(--sea-dark);
+    color:var(--seaDark);
 
 }
 
-/* =========================================================
+/* ============================
 GRID
-========================================================= */
+============================ */
 
 .clue-grid{
 
@@ -121,31 +114,34 @@ GRID
     display:grid;
 
     grid-template-columns:
+
         repeat(3,1fr);
 
     grid-template-rows:
+
         repeat(5,1fr);
 
-    gap:14px;
+    gap:16px;
 
     padding:
 
-        18px
-        18px
-        24px
         18px;
+
+    width:100%;
+
+    height:100%;
 
 }
 
-/* =========================================================
+/* ============================
 TILE
-========================================================= */
+============================ */
 
 .clueTile{
 
-    border-radius:var(--radius);
-
     border:none;
+
+    border-radius:22px;
 
     background:var(--sea);
 
@@ -158,11 +154,12 @@ TILE
     box-shadow:var(--shadow);
 
     transition:
-        transform .18s,
-        background .2s,
-        opacity .25s;
 
-    cursor:pointer;
+        transform .18s,
+
+        background .25s,
+
+        box-shadow .25s;
 
     display:flex;
 
@@ -178,22 +175,6 @@ TILE
 
 }
 
-/* =========================================================
-LOCKED
-========================================================= */
-
-.locked{
-
-    background:var(--sea-dark);
-
-    color:white;
-
-}
-
-/* =========================================================
-AVAILABLE
-========================================================= */
-
 .available{
 
     background:var(--sea);
@@ -202,13 +183,15 @@ AVAILABLE
 
 .available:hover{
 
-    background:var(--sea-light);
+    background:var(--seaLight);
 
 }
 
-/* =========================================================
-COMPLETE
-========================================================= */
+.locked{
+
+    background:var(--seaDark);
+
+}
 
 .complete{
 
@@ -216,41 +199,9 @@ COMPLETE
 
 }
 
-/* =========================================================
-POP ANIMATION
-========================================================= */
-
-@keyframes pop{
-
-    0%{
-
-        transform:scale(.5);
-
-    }
-
-    70%{
-
-        transform:scale(1.1);
-
-    }
-
-    100%{
-
-        transform:scale(1);
-
-    }
-
-}
-
-.complete{
-
-    animation:pop .35s;
-
-}
-
-/* =========================================================
-OVERLAYS
-========================================================= */
+/* ============================
+OVERLAY
+============================ */
 
 .overlay{
 
@@ -258,28 +209,151 @@ OVERLAYS
 
     inset:0;
 
+    background:
+
+        rgba(0,0,0,.45);
+
     display:flex;
 
     justify-content:center;
 
     align-items:flex-end;
 
-    background:
-        rgba(0,0,0,.45);
-
     z-index:100;
 
 }
 
-.hidden{
+/* ============================
+BOTTOM SHEET
+============================ */
 
-    display:none!important;
+.popup{
+
+    width:100%;
+
+    height:95vh;
+
+    background:var(--sand);
+
+    border-radius:
+
+        28px 28px 0 0;
+
+    box-shadow:
+
+        0 -8px 30px rgba(0,0,0,.25);
+
+    padding:
+
+        26px;
+
+    overflow-y:auto;
+
+    animation:
+
+        sheetUp .35s;
 
 }
 
-/* =========================================================
+@keyframes sheetUp{
+
+    from{
+
+        transform:translateY(100%);
+
+    }
+
+    to{
+
+        transform:translateY(0);
+
+    }
+
+}
+
+/* ============================
+ANSWER BOX
+============================ */
+
+#answerInput{
+
+    width:100%;
+
+    padding:20px;
+
+    font-size:1.25rem;
+
+    border-radius:18px;
+
+    border:
+
+        4px solid var(--sea);
+
+    background:white;
+
+    margin-top:30px;
+
+    margin-bottom:20px;
+
+    outline:none;
+
+    transition:.2s;
+
+}
+
+#answerInput:focus{
+
+    border-color:
+
+        var(--seaLight);
+
+}
+
+.mainButton,
+.secondaryButton{
+
+    width:100%;
+
+    padding:18px;
+
+    margin-top:14px;
+
+    border:none;
+
+    border-radius:18px;
+
+    font-size:1.15rem;
+
+    font-weight:bold;
+
+    transition:.2s;
+
+}
+
+.mainButton{
+
+    background:var(--sea);
+
+    color:white;
+
+}
+
+.secondaryButton{
+
+    background:var(--sandDark);
+
+}
+
+.mainButton:active,
+.secondaryButton:active{
+
+    transform:scale(.97);
+
+}
+
+/* ============================
 WRONG ANSWER
-========================================================= */
+============================ */
 
 #wrongOverlay{
 
@@ -287,15 +361,15 @@ WRONG ANSWER
 
     inset:0;
 
-    z-index:999;
+    background:black;
+
+    z-index:9999;
 
     display:flex;
 
     justify-content:center;
 
     align-items:center;
-
-    background:black;
 
 }
 
@@ -309,418 +383,3 @@ WRONG ANSWER
 
 }
 
-/* =========================================================
-SCROLLBAR
-========================================================= */
-
-::-webkit-scrollbar{
-
-    display:none;
-
-}
-/* =========================================================
-   STYLE.CSS
-   PART 2
-========================================================= */
-
-
-/* ===============================
-   POPUP CARD
-================================ */
-
-.popup{
-
-    width:100%;
-    max-width:650px;
-
-    max-height:92vh;
-
-    overflow-y:auto;
-
-    background:var(--sand);
-
-    border-radius:28px 28px 0 0;
-
-    box-shadow:
-        0 -8px 30px rgba(0,0,0,.25);
-
-    padding:
-
-        26px
-        26px
-        36px
-        26px;
-
-    animation:slideUp .35s ease;
-
-}
-
-
-/* ===============================
-   POPUP ANIMATION
-================================ */
-
-@keyframes slideUp{
-
-    from{
-
-        transform:translateY(100%);
-        opacity:0;
-
-    }
-
-    to{
-
-        transform:translateY(0);
-        opacity:1;
-
-    }
-
-}
-
-
-/* ===============================
-   CLOSE BUTTON
-================================ */
-
-.closeButton{
-
-    width:44px;
-    height:44px;
-
-    border:none;
-
-    border-radius:50%;
-
-    background:var(--sea);
-
-    color:white;
-
-    font-size:22px;
-
-    cursor:pointer;
-
-    float:right;
-
-    transition:.2s;
-
-}
-
-.closeButton:hover{
-
-    background:var(--sea-light);
-
-}
-
-.closeButton:active{
-
-    transform:scale(.92);
-
-}
-
-
-/* ===============================
-   CLUE TITLE
-================================ */
-
-#clueTitle{
-
-    clear:both;
-
-    text-align:center;
-
-    font-size:2rem;
-
-    margin-bottom:18px;
-
-    color:var(--sea-dark);
-
-}
-
-
-/* ===============================
-   CLUE IMAGE
-================================ */
-
-#clueImage{
-
-    width:100%;
-
-    border-radius:18px;
-
-    margin-bottom:20px;
-
-    box-shadow:var(--shadow);
-
-    display:block;
-
-}
-
-
-/* ===============================
-   CLUE TEXT
-================================ */
-
-#clueText{
-
-    font-size:1.25rem;
-
-    line-height:1.5;
-
-    margin-bottom:24px;
-
-    text-align:center;
-
-}
-
-
-/* ===============================
-   ANSWER BOX
-================================ */
-
-#answerInput{
-
-    width:100%;
-
-    font-size:1.2rem;
-
-    padding:18px;
-
-    border-radius:16px;
-
-    border:3px solid var(--sea);
-
-    background:white;
-
-    color:var(--black);
-
-    outline:none;
-
-    margin-bottom:18px;
-
-    transition:.2s;
-
-}
-
-#answerInput:focus{
-
-    border-color:var(--sea-light);
-
-    box-shadow:0 0 10px rgba(58,124,165,.35);
-
-}
-
-
-/* ===============================
-   BUTTONS
-================================ */
-
-.mainButton,
-.secondaryButton{
-
-    width:100%;
-
-    padding:18px;
-
-    border:none;
-
-    border-radius:18px;
-
-    font-size:1.15rem;
-
-    font-weight:bold;
-
-    cursor:pointer;
-
-    margin-top:12px;
-
-    transition:.18s;
-
-}
-
-
-.mainButton{
-
-    background:var(--sea);
-
-    color:white;
-
-}
-
-
-.mainButton:hover{
-
-    background:var(--sea-light);
-
-}
-
-
-.secondaryButton{
-
-    background:var(--sand-dark);
-
-    color:var(--black);
-
-}
-
-
-.secondaryButton:hover{
-
-    filter:brightness(.95);
-
-}
-
-
-.mainButton:active,
-.secondaryButton:active{
-
-    transform:scale(.97);
-
-}
-
-
-/* ===============================
-   HINT TEXT
-================================ */
-
-#hintText,
-#hintTaskText{
-
-    font-size:1.2rem;
-
-    line-height:1.5;
-
-    text-align:center;
-
-    margin:
-
-        24px
-        0;
-
-}
-
-
-/* ===============================
-   FINAL SCREEN
-================================ */
-
-#finalOverlay{
-
-    justify-content:center;
-
-    align-items:center;
-
-}
-
-
-#finalOverlay .popup{
-
-    border-radius:28px;
-
-    text-align:center;
-
-}
-
-
-#finalOverlay h2{
-
-    font-size:2.4rem;
-
-    color:var(--sea-dark);
-
-    margin-bottom:20px;
-
-}
-
-
-#finalOverlay p{
-
-    font-size:1.3rem;
-
-    margin-bottom:26px;
-
-}
-
-
-/* ===============================
-   SHAKE ANIMATION
-================================ */
-
-@keyframes shake{
-
-    0%{transform:translateX(0);}
-    15%{transform:translateX(-10px);}
-    30%{transform:translateX(10px);}
-    45%{transform:translateX(-10px);}
-    60%{transform:translateX(10px);}
-    75%{transform:translateX(-6px);}
-    90%{transform:translateX(6px);}
-    100%{transform:translateX(0);}
-
-}
-
-.shake{
-
-    animation:shake .45s;
-
-}
-
-
-/* ===============================
-   FADE
-================================ */
-
-@keyframes fadeIn{
-
-    from{
-
-        opacity:0;
-
-    }
-
-    to{
-
-        opacity:1;
-
-    }
-
-}
-
-.fadeIn{
-
-    animation:fadeIn .25s;
-
-}
-
-
-/* ===============================
-   MOBILE
-================================ */
-
-@media (max-width:500px){
-
-    .title-area h1{
-
-        font-size:1.7rem;
-
-    }
-
-    .clueTile{
-
-        font-size:1.8rem;
-
-    }
-
-    #clueTitle{
-
-        font-size:1.7rem;
-
-    }
-
-    #clueText{
-
-        font-size:1.1rem;
-
-    }
-
-}
