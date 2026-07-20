@@ -1,0 +1,7 @@
+<!doctype html><html><head><meta name='viewport' content='width=device-width,initial-scale=1'>
+<link rel='stylesheet' href='style.css'><title>Treasure Hunt</title></head><body>
+<header><h1>🏴‍☠️ Treasure Hunt</h1><div id='bar'><div id='fill'></div></div><div id='prog'></div></header>
+<div id='grid'></div>
+<div id='overlay' class='hide'><div class='sheet'><h2 id='ct'></h2><img id='ci' src='assets/placeholder.png'><p id='cc'></p><input id='ans' placeholder='Enter answer'><div class='row'><button onclick='check()'>Submit</button><button onclick='taskHint()'>Hint</button></div><p id='hint'></p><button onclick='closeSheet()'>Close</button></div></div>
+<div id='wrong' class='hide'><img src='assets/wrong.gif'><audio id='aud' src='assets/wrong.mp3'></audio></div>
+<script src='clues.js'></script><script src='script.js'></script></body></html>
