@@ -1,8 +1,8 @@
 const clues = [
 {
     id: 1,
-    clue: 'clue',
-    image: 'assets/placeholder.png',
+    clue: '',
+    image: '1.jpeg',
     answers: ['answer'],
     hintTask: 'Complete the organiser task.',
     hint: 'hint',
