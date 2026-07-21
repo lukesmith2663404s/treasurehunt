@@ -2,7 +2,7 @@ const clues = [
 {
     id: 1,
     clue: '',
-    image: '1.jpeg',
+    image: 'assets/1.jpeg',
     answers: ['answer'],
     hintTask: 'Complete the organiser task.',
     hint: 'hint',
@@ -11,7 +11,7 @@ const clues = [
 {
     id: 2,
     clue: 'What\'s missing from this image',
-    image: '2.jpeg',
+    image: 'assets/2.jpeg',
     answers: ['3bar'],
     hintTask: 'Complete the organiser task.',
     hint: 'hint',
@@ -20,7 +20,7 @@ const clues = [
 {
     id: 3,
     clue: 'Find and solve the puzzle in the sand',
-    image: '3.jpeg',
+    image: 'assets/3.jpeg',
     answers: ['answer'],
     hintTask: 'Complete the organiser task.',
     hint: 'hint',
@@ -29,7 +29,7 @@ const clues = [
 {
     id: 4,
     clue: '',
-    image: '4.jpeg',
+    image: 'assets/4.jpeg',
     answers: ['answer'],
     hintTask: 'Complete the organiser task.',
     hint: 'hint',
@@ -38,7 +38,7 @@ const clues = [
 {
     id: 5,
     clue: 'What\'s missing from this image',
-    image: '5.jpeg',
+    image: 'assets/5.jpeg',
     answers: ['unique'],
     hintTask: 'Complete the organiser task.',
     hint: 'hint',
@@ -47,7 +47,7 @@ const clues = [
 {
     id: 6,
     clue: 'What colour is this flower?',
-    image: '6.jpeg',
+    image: 'assets/6.jpeg',
     answers: ['orange', 'vermillion', 'red-orange', 'orangey red', 'reddish orange'],
     hintTask: 'Complete the organiser task.',
     hint: 'hint',
@@ -56,7 +56,7 @@ const clues = [
 {
     id: 7,
     clue: 'How many rectangles are made by the gaps between the all of the tiles?',
-    image: '7.jpeg',
+    image: 'assets/7.jpeg',
     answers: ['58'],
     hintTask: 'Complete the organiser task.',
     hint: 'hint',
@@ -65,7 +65,7 @@ const clues = [
 {
     id: 8,
     clue: 'What colour is this flower?',
-    image: '8.jpeg',
+    image: 'assets/8.jpeg',
     answers: ['purple'],
     hintTask: 'Complete the organiser task.',
     hint: 'hint',
@@ -74,7 +74,7 @@ const clues = [
 {
     id: 9,
     clue: 'What\'s missing from this image?',
-    image: '9.jpeg',
+    image: 'assets/9.jpeg',
     answers: ['answer'],
     hintTask: 'Complete the organiser task.',
     hint: 'hint',
@@ -83,7 +83,7 @@ const clues = [
 {
     id: 10,
     clue: '',
-    image: '10.jpeg',
+    image: 'assets/10.jpeg',
     answers: ['bottom milk'],
     hintTask: 'Complete the organiser task.',
     hint: 'hint',
@@ -92,7 +92,7 @@ const clues = [
 {
     id: 11,
     clue: 'Which of these spots can you see the golfballs from?',
-    image: '11.jpeg',
+    image: 'assets/11.jpeg',
     answers: ['A and D', 'A, D', 'A,D', 'AD'],
     hintTask: 'Complete the organiser task.',
     hint: 'hint',
@@ -101,7 +101,7 @@ const clues = [
 {
     id: 12,
     clue: 'How many metal bars make up the cattle grid at the front of the house?',
-    image: '',
+    image: 'assets/12.jpeg',
     answers: ['51'],
     hintTask: 'Complete the organiser task.',
     hint: 'hint',
@@ -110,7 +110,7 @@ const clues = [
 {
     id: 13,
     clue: 'clue',
-    image: '13.jpeg',
+    image: 'assets/13.jpeg',
     answers: ['answer'],
     hintTask: 'Complete the organiser task.',
     hint: 'hint',
@@ -119,7 +119,7 @@ const clues = [
 {
     id: 14,
     clue: 'clue',
-    image: '14.jpeg',
+    image: 'assets/14.jpeg',
     answers: ['answer'],
     hintTask: 'Complete the organiser task.',
     hint: 'hint',
@@ -128,7 +128,7 @@ const clues = [
 {
     id: 15,
     clue: 'clue',
-    image: '15.jpeg',
+    image: 'assets/15.jpeg',
     answers: ['answer'],
     hintTask: 'Complete the organiser task.',
     hint: 'hint',
