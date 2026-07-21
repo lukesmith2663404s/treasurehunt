@@ -10,7 +10,7 @@ const clues = [
 },
 {
     id: 2,
-    clue: 'What\'s missing from this image',
+    clue: 'What\'s missing from this image?',
     image: 'assets/2.jpeg',
     answers: ['3bar'],
     hintTask: 'Complete the organiser task.',
@@ -37,7 +37,7 @@ const clues = [
 },
 {
     id: 5,
-    clue: 'What\'s missing from this image',
+    clue: 'What\'s missing from this image?',
     image: 'assets/5.jpeg',
     answers: ['unique'],
     hintTask: 'Complete the organiser task.',
