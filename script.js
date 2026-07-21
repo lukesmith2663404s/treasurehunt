@@ -4,8 +4,10 @@ let active = [];
 // Hint tasks list
 const hintTasks = [
     'Bring Anna a cockle shell',
+    'Put a limpet shell on another player\'s head then tell Anna',
     'Build a sandcastle and take a photo to show Anna',
-    'Stick a peg to another player\'s clothes and show Anna',
+    'Stick a peg to another player\'s clothes then tell Anna',
+    'Start chanting another player\'s name and chase them until you catch them, then tell Anna',
 ];
 
 function unlock() {
@@ -80,7 +82,7 @@ function getRandomHintTask() {
 function showHintTask() {
     let hintTaskText = document.getElementById('hintTaskText');
     let randomTask = getRandomHintTask();
-    hintTaskText.textContent = 'Task: ' + randomTask + '\n\nShow Anna when you\'ve completed it to get your hint!';
+    hintTaskText.textContent = 'Task: ' + randomTask
     
     let hintTaskOverlay = document.getElementById('hintTaskOverlay');
     hintTaskOverlay.classList.remove('hidden');
