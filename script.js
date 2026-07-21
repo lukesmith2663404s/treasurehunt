@@ -6,7 +6,10 @@ const hintTasks = [
     'Bring Anna a cockle shell',
     'Put a limpet shell on another player\'s head then tell Anna',
     'Build a sandcastle and take a photo to show Anna',
+    'Pick a soldier for yourself and for Anna, then beat Anna\'s soldier',
     'Stick a peg to another player\'s clothes then tell Anna',
+    'Find something with 11 letters, and sing the Mickey Mouse Clubhouse song, replacing M I C K E Y M O U S E with the 11 letters, to Anna',
+    'Draw a picture of an animal in the sand, take a photo to show Anna, and have her correctly identify the animal first try with no hints',
     'Start chanting another player\'s name and chase them until you catch them, then tell Anna',
 ];
 
