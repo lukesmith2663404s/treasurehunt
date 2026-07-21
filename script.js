@@ -3,21 +3,9 @@ let active = [];
 
 // Hint tasks list
 const hintTasks = [
-    'Find 3 different shades of blue in the room and show Anna',
-    'Do 10 jumping jacks and show Anna when done',
-    'Find something that rhymes with "clue" and show Anna',
-    'Sing the first line of a song to Anna',
-    'Do a funny dance move for Anna',
-    'Find an object that starts with each letter of your name and show Anna',
-    'Tell Anna a joke',
-    'Balance something on your head for 5 seconds and show Anna',
-    'Find the most interesting book nearby and show Anna',
-    'Do 5 push-ups and show Anna when done',
-    'Make a silly face and show Anna',
-    'Find something red, yellow, and green and show Anna',
-    'Recite the alphabet backwards to Anna',
-    'Find 3 things that are square and show Anna',
-    'Tell Anna what your favorite food is and why'
+    'Bring Anna a cockle shell',
+    'Build a sandcastle and take a photo to show Anna',
+    'Stick a peg to another player\'s clothes and show Anna',
 ];
 
 function unlock() {
@@ -164,7 +152,7 @@ document.getElementById('completedTaskButton').onclick = () => {
 };
 document.getElementById('closeHintButton').onclick = closeHint;
 document.getElementById('showFinalButton').onclick = () => {
-    alert('🎉 FINAL CLUE PLACEHOLDER - Add your final message here!');
+    alert('FINAL CLUE');
 };
 
 // Load saved progress
