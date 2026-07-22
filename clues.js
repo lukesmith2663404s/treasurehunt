@@ -93,7 +93,7 @@ const clues = [
     id: 11,
     clue: 'Which of these spots can you see the golfballs from?',
     image: 'assets/11.jpeg',
-    answers: ['A and D', 'A, D', 'A,D', 'AD'],
+    answers: ['a and d', 'a, d', 'a,d', 'ad'],
     hintTask: '',
     hint: 'Ask Luke or Anna for a hint',
     state: 'locked',
