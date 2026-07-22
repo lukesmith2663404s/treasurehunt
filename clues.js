@@ -5,7 +5,7 @@ const clues = [
     image: 'assets/1.jpeg',
     answers: ['mr biscuits', 'mr. biscuits', 'mr.biscuits', 'mrbiscuits'],
     hintTask: '',
-    hint: 'hint',
+    hint: 'Ask Luke or Anna for a hint',
     state: 'locked',
 },
 {
@@ -14,7 +14,7 @@ const clues = [
     image: 'assets/2.jpeg',
     answers: ['3bar'],
     hintTask: '',
-    hint: 'hint',
+    hint: 'Ask Luke or Anna for a hint',
     state: 'locked',
 },
 {
@@ -23,7 +23,7 @@ const clues = [
     image: 'assets/3.jpeg',
     answers: ['crab'],
     hintTask: '',
-    hint: 'hint',
+    hint: 'Ask Luke or Anna for a hint',
     state: 'locked',
 },
 {
@@ -32,7 +32,7 @@ const clues = [
     image: 'assets/4.jpeg',
     answers: ['salum beach', 'salumbeach'],
     hintTask: '',
-    hint: 'hint',
+    hint: 'Ask Luke or Anna for a hint',
     state: 'locked',
 },
 {
@@ -41,7 +41,7 @@ const clues = [
     image: 'assets/5.jpeg',
     answers: ['unique'],
     hintTask: '',
-    hint: 'hint',
+    hint: 'Ask Luke or Anna for a hint',
     state: 'locked',
 },
 {
@@ -50,7 +50,7 @@ const clues = [
     image: 'assets/6.jpeg',
     answers: ['orange', 'vermillion', 'red-orange', 'orangey red', 'reddish orange'],
     hintTask: '',
-    hint: 'hint',
+    hint: 'Ask Luke or Anna for a hint',
     state: 'locked',
 },
 {
@@ -59,7 +59,7 @@ const clues = [
     image: 'assets/7.jpeg',
     answers: ['58'],
     hintTask: '',
-    hint: 'hint',
+    hint: 'Ask Luke or Anna for a hint',
     state: 'locked',
 },
 {
@@ -68,7 +68,7 @@ const clues = [
     image: 'assets/8.jpeg',
     answers: ['purple'],
     hintTask: '',
-    hint: 'hint',
+    hint: 'Ask Luke or Anna for a hint',
     state: 'locked',
 },
 {
@@ -77,7 +77,7 @@ const clues = [
     image: 'assets/9.jpeg',
     answers: ['atlas'],
     hintTask: '',
-    hint: 'hint',
+    hint: 'Ask Luke or Anna for a hint',
     state: 'locked',
 },
 {
@@ -86,7 +86,7 @@ const clues = [
     image: 'assets/10.jpeg',
     answers: ['bottom milk'],
     hintTask: '',
-    hint: 'hint',
+    hint: 'Ask Luke or Anna for a hint',
     state: 'locked',
 },
 {
@@ -95,7 +95,7 @@ const clues = [
     image: 'assets/11.jpeg',
     answers: ['A and D', 'A, D', 'A,D', 'AD'],
     hintTask: '',
-    hint: 'hint',
+    hint: 'Ask Luke or Anna for a hint',
     state: 'locked',
 },
 {
@@ -104,7 +104,7 @@ const clues = [
     image: 'assets/12.jpeg',
     answers: ['51'],
     hintTask: '',
-    hint: 'hint',
+    hint: 'Ask Luke or Anna for a hint',
     state: 'locked',
 },
 {
@@ -113,7 +113,7 @@ const clues = [
     image: 'assets/13.jpeg',
     answers: ['lobster'],
     hintTask: '',
-    hint: 'hint',
+    hint: 'Ask Luke or Anna for a hint',
     state: 'locked',
 },
 {
@@ -122,7 +122,7 @@ const clues = [
     image: 'assets/14.jpeg',
     answers: ['treasure hunt', 'treasurehunt'],
     hintTask: '',
-    hint: 'hint',
+    hint: 'Ask Luke or Anna for a hint',
     state: 'locked',
 },
 {
@@ -131,7 +131,7 @@ const clues = [
     image: 'assets/15.jpeg',
     answers: ['gavin stewart', 'gavinstewart'],
     hintTask: '',
-    hint: 'hint',
+    hint: 'Ask Luke or Anna for a hint',
     state: 'locked',
 },
 ];
