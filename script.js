@@ -157,7 +157,7 @@ document.getElementById('completedTaskButton').onclick = () => {
 };
 document.getElementById('closeHintButton').onclick = closeHint;
 document.getElementById('showFinalButton').onclick = () => {
-    alert('FINAL CLUE');
+    alert('The treasure hunt trophy is behind Bigster 🦞');
 };
 
 // Load saved progress
